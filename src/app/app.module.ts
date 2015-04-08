@@ -1,23 +1,29 @@
 ///<reference path="../../tools/typings/tsd.d.ts" />
 ///<reference path="../../tools/typings/typescriptApp.d.ts" />
 
-((): void => {
+'use strict';
 
-    var app = angular.module('demoApp', ['ngRoute', 'ngAnimate']);
+import {configure} from 'app.config';
+import CustomersController from 'controllers/customers.controller';
+import OrdersController from 'controllers/orders.controller';
+import CustomersService from 'services/customers.service';
+import * as FTBComponent from 'directives/filterTextbox.directive';
 
-    app.config(['$routeProvider', ($routeProvider) => {
-        $routeProvider.when('/',
-        {
-            controller: 'demoApp.CustomersController',
-            templateUrl: 'app/views/customers.html',
-            controllerAs: 'vm'
-        })
-        .when('/orders/:customerId',
-        {
-            controller: 'demoApp.OrdersController',
-            templateUrl: 'app/views/orders.html',
-            controllerAs: 'vm'
-        });
-    }]);
+const appModule: ng.IModule = angular.module('demoApp', [
+    'ngRoute',
+    'ngAnimate'
+])
+    .config(configure)
+    .controller(CustomersController.id, CustomersController)
+    .controller(OrdersController.id, OrdersController)
 
-})();
+    .directive(FTBComponent.FilterTextbox.id, FTBComponent.FilterTextbox.instance)
+    .controller(FTBComponent.FilterTextboxController.id, FTBComponent.FilterTextboxController)
+
+    .service(CustomersService.id, CustomersService);
+
+
+console.log(CustomersController, CustomersService, OrdersController, FTBComponent);
+
+export default appModule;
+

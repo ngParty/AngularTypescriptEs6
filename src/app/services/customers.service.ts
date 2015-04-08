@@ -1,19 +1,24 @@
-///<reference path="../../../tools/typings/tsd.d.ts" />
-///<reference path="../../../tools/typings/typescriptApp.d.ts" />
+import appModule from 'app.module';
 
-module demoApp {
+type Http = ng.IHttpService;
+type HttpPromise = ng.IHttpPromise<any>;
 
-    class CustomersService {
+export interface ICustomerService {
+    getCustomers():HttpPromise;
+}
 
-        static $inject = ['$http'];
-        constructor(private $http: ng.IHttpService) {}
+class CustomersService implements ICustomerService {
 
-        getCustomers() {
-            return this.$http.get('customers.json');
-        }
+    static $inject = [ '$http' ];
+    static id = 'demoApp.customersService';
+
+    constructor( private $http: Http ) {
     }
 
-    angular.module('demoApp')
-        .service('demoApp.customersService', CustomersService);
-
+    getCustomers() {
+        return this.$http.get('customers.json');
+    }
 }
+
+export default CustomersService;
+

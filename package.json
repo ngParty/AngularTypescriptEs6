@@ -14,7 +14,13 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "superstatic": "^2.0.2"
+    "es6-module-loader": "^0.16.4",
+    "superstatic": "^2.0.2",
+    "systemjs": "^0.16.7"
+  },
+  "scripts": {
+    "prepare": "npm i && bower i && tsd reinstall -so",
+    "start": "gulp && superstatic"
   },
   "devDependencies": {
     "gulp": "^3.8.11",

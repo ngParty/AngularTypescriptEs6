@@ -1,39 +1,49 @@
-///<reference path="../../../tools/typings/tsd.d.ts" />
-///<reference path="../../../tools/typings/typescriptApp.d.ts" />
+import appModule from 'app.module';
 
-module demoApp.directives {
+type NgComponent = ng.IDirective;
+type Scope = ng.IScope;
 
-    class FilterTextbox implements ng.IDirective {
+export class FilterTextbox implements NgComponent {
 
-        static instance() : ng.IDirective {
-            return new FilterTextbox();
-        }
-
-        template = 'Search: <input type="text" ng-model="vm.filter" /> {{ vm.message }}';
-        restrict = 'E';
-        scope = {
-            filter: '='
-        };
-        controller: ($scope: ng.IScope) => void;
-        controllerAs = 'vm';
-        bindToController = true;
-
-        constructor() {
-            this.controller = function ($scope: ng.IScope) {
-                var vm = this;
-                vm.message = 'Hello';
-
-                $scope.$watch('vm.filter', (newVal, oldVal) => {
-                    if (oldVal !== '' && newVal === '') {
-                        vm.message = 'Please enter a value';
-                    } else {
-                        vm.message = '';
-                    }
-                });
-            };
-        }
+    static instance(): ng.IDirective {
+        return new FilterTextbox();
     }
 
-    angular.module('demoApp').directive('filterTextbox', FilterTextbox.instance);
+    static id = 'filterTextbox';
 
+    template = 'Search: <input type="text" ng-model="vm.filter" /> {{ vm.message }}';
+    restrict = 'E';
+    scope = {
+        filter: '='
+    };
+    controller = FilterTextboxController.id;
+    controllerAs = FilterTextboxController.nameAs;
+    bindToController = true;
+
+    constructor() {
+    }
 }
+
+export class FilterTextboxController {
+
+    static nameAs = 'vm';
+    static id = 'FilterTextboxController';
+
+    message: string;
+
+    constructor( private $scope: Scope ) {
+
+        var vm = this;
+        vm.message = 'Hello';
+
+        $scope.$watch('vm.filter', ( newVal, oldVal ) => {
+            if ( oldVal !== '' && newVal === '' ) {
+                vm.message = 'Please enter a value';
+            } else {
+                vm.message = '';
+            }
+        });
+
+    }
+}
+

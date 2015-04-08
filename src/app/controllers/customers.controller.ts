@@ -1,22 +1,24 @@
-///<reference path="../../../tools/typings/tsd.d.ts" />
-///<reference path="../../../tools/typings/typescriptApp.d.ts" />
+import {ICustomerService} from 'services/customers.service';
 
-module demoApp {
-    'use strict';
+'use strict';
 
-    class CustomersController {
-        customers = null;
+class CustomersController {
+    customers = null;
 
-        static $inject = ['demoApp.customersService'];
-        constructor(customersFactory) {
-            customersFactory.getCustomers()
-              .success((custs) => {
-                 this.customers = custs;
-              });
-        }
+    static $inject = [ 'demoApp.customersService' ];
+    static id = 'demoApp.CustomersController';
+
+    constructor( customersFactory: ICustomerService ) {
+
+        customersFactory.getCustomers()
+            .success(( custs ) => {
+                this.customers = custs;
+            });
+
     }
-
-    angular.module('demoApp')
-           .controller('demoApp.CustomersController', CustomersController);
-
 }
+
+
+
+export default CustomersController;
+

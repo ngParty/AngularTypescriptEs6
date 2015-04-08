@@ -1,19 +1,16 @@
-///<reference path="../../../tools/typings/tsd.d.ts" />
-///<reference path="../../../tools/typings/typescriptApp.d.ts" />
 
-module demoApp {
+'use strict';
 
-    class OrdersController {
+class OrdersController {
 
-        customerId: number;
+    customerId: number;
 
-        static $inject = ['$routeParams'];
-        constructor($routeParams) {
-            this.customerId = $routeParams.customerId;
-        }
+    static $inject = [ '$routeParams' ];
+    static id = 'demoApp.OrdersController';
+
+    constructor( $routeParams ) {
+        this.customerId = $routeParams.customerId;
     }
-
-    angular.module('demoApp')
-        .controller('demoApp.OrdersController', OrdersController);
-
 }
+
+export default OrdersController;
