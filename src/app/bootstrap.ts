@@ -1,9 +1,9 @@
-///<reference path="../../tools/typings/tsd.d.ts" />
-///<reference path="../../tools/typings/typescriptApp.d.ts" />
-
 'use strict';
 
-//import angular from 'angular';
+import 'angular';
+import 'angular-route';
+import 'angular-animate';
+
 import appModule from 'app.module';
 
 angular.element(document).ready(function () {

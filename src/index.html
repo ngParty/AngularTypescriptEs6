@@ -1,10 +1,9 @@
 <!--
-   AngularJS with TypeScript in 20-ish Minutes
-   Dan Wahlin
+   AngularJS with TypeScript - Angie Party
+   Martin Hochel
 
-   @DanWahlin
-   http://weblogs.asp.net/dwahlin
-   http://github.com/danwahlin
+   @Hotell
+   http://github.com/Hotell
 
    1. Data Binding and Directives
    2. Filters
@@ -20,40 +19,35 @@
     <link href="styles/animations.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>AngularJS and TypeScript in 20-ish Minutes</h1>
+    <h1>AngularJS and TypeScript - Angie Party 1st meetup</h1>
     <br />
 
     <div ng-view class="slide-animation"></div>
 
     <script src="bower_packages/systemjs/dist/system.js"></script>
-
-    <script src="bower_packages/angular/angular.js"></script>
-    <script src="bower_packages/angular-route/angular-route.js"></script>
-    <script src="bower_packages/angular-animate/angular-animate.js"></script>
-
     <script>
         // Identical to writing System.baseURL = ...
-        System.config({
+        System.config( {
 
-            // set all requires to "lib" for library code
             baseURL: './app',
-
-            // set "app" as an exception for our application code
             paths: {
+                "*": "*.js",
+                "bower:*": "../bower_packages/*.js",
+            },
+            map: {
+                'app': 'app.module',
+                "angular": "bower:angular/angular",
+                "angular-route": "bower:angular-route/angular-route",
+                "angular-animate": "bower:angular-animate/angular-animate"
             }
-        });
+        } );
 
-        System.import('bootstrap').then(function() {
+        System.import( 'bootstrap' ).then( function() {
 
             console.log( 'loaded...' );
 
-        });
+        } );
     </script>
 
-    <!--<script src="js/app.module.js"></script>-->
-    <!--<script src="js/controllers/customers.controller.js"></script>-->
-    <!--<script src="js/controllers/orders.controller.js"></script>-->
-    <!--<script src="js/services/customers.service.js"></script>-->
-    <!--<script src="js/directives/filterTextbox.directive.js"></script>-->
 </body>
 </html>

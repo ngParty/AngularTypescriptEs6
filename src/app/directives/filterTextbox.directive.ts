@@ -11,7 +11,7 @@ export class FilterTextbox implements NgComponent {
 
     static id = 'filterTextbox';
 
-    template = 'Search: <input type="text" ng-model="vm.filter" /> {{ vm.message }}';
+    template = 'Search: <input type="search" ng-model="vm.filter"> {{ vm.message }}';
     restrict = 'E';
     scope = {
         filter: '='
