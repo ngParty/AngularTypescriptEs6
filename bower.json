@@ -1,10 +1,10 @@
 {
-  "name": "ngconf-typescript",
-  "version": "0.1.0",
+  "name": "angieparty-angular-typescript",
+  "version": "0.2.0",
   "description": "AngularJS and TypeScript",
-  "homepage": "https://github.com/andrewconnell/ngconf-typescript",
+  "homepage": "https://github.com/angie-party",
   "authors": [
-    "Dan Wahlin <dwahlin@wahlinconsulting.com>"
+    "Dan Wahlin <hochelmartin@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [

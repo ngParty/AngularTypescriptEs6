@@ -15,8 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "es6-module-loader": "^0.16.4",
-    "superstatic": "^2.0.2",
-    "systemjs": "^0.16.7"
+    "systemjs": "^0.16.7",
+    "superstatic": "^2.0.2"
   },
   "scripts": {
     "prepare": "npm i && bower i && tsd reinstall -so",
@@ -29,7 +29,8 @@
     "gulp-rimraf": "^0.1.1",
     "gulp-sourcemaps": "^1.3.0",
     "gulp-tsd": "0.0.4",
-    "gulp-tslint": "^1.4.3",
-    "gulp-typescript": "^2.4.2"
+    "gulp-tslint": "^1.5.0",
+    "gulp-typescript": "^2.6.0",
+    "typescript": "^1.5.0-alpha"
   }
 }
