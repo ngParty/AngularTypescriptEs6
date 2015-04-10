@@ -1,9 +1,6 @@
 'use strict';
 
-import 'angular';
-import 'angular-route';
-import 'angular-animate';
-
+import 'vendor';
 import appModule from 'app.module';
 
 angular.element(document).ready(function () {

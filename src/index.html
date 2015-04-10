@@ -2,6 +2,9 @@
    AngularJS with TypeScript - Angie Party
    Martin Hochel
 
+   This is a rewrite of https://github.com/DanWahlin/AngularIn20TypeScript
+   to fully leverage ES6 features and latest typescript 1.5alpha
+
    @Hotell
    http://github.com/Hotell
 
@@ -15,39 +18,41 @@
 <html>
 <head>
     <title>Angular App</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="styles/animations.css" rel="stylesheet" />
+    <link href="bower_packages/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="styles/animations.css" rel="stylesheet"/>
 </head>
 <body>
-    <h1>AngularJS and TypeScript - Angie Party 1st meetup</h1>
-    <br />
+<div class="text-center">
+    <img src="img/ngParty.jpg" style="height: 200px;">
+</div>
+<h1>AngularJS and TypeScript - Angie Party 1st meetup</h1>
+<br/>
 
-    <div ng-view class="slide-animation"></div>
+<div ng-view class="slide-animation"></div>
 
-    <script src="bower_packages/systemjs/dist/system.js"></script>
-    <script>
-        // Identical to writing System.baseURL = ...
-        System.config( {
+<script src="bower_packages/systemjs/dist/system.js"></script>
+<script>
+    System.config( {
 
-            baseURL: './app',
-            paths: {
-                "*": "*.js",
-                "bower:*": "../bower_packages/*.js",
-            },
-            map: {
-                'app': 'app.module',
-                "angular": "bower:angular/angular",
-                "angular-route": "bower:angular-route/angular-route",
-                "angular-animate": "bower:angular-animate/angular-animate"
-            }
-        } );
+        baseURL: './app',
+        paths: {
+            "*": "*.js",
+            "bower:*": "../bower_packages/*.js"
+        },
+        map: {
+            'app': 'app.module',
+            "angular": "bower:angular/angular",
+            "angular-route": "bower:angular-route/angular-route",
+            "angular-animate": "bower:angular-animate/angular-animate"
+        }
+    } );
 
-        System.import( 'bootstrap' ).then( function() {
+    System.import( 'bootstrap' ).then( function() {
 
-            console.log( 'loaded...' );
+        console.log( 'loaded...' );
 
-        } );
-    </script>
+    } );
+</script>
 
 </body>
 </html>
